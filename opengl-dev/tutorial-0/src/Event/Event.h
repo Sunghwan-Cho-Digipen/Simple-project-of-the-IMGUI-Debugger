@@ -2,6 +2,7 @@
 
 #include <string>
 #include <functional>
+#include <spdlog/fmt/bundled/format.h>
 
 namespace ggm
 {
@@ -72,3 +73,14 @@ namespace ggm
 		return os << e.ToString();
 	}
 }
+
+
+////https://fmt.dev/latest/api.html#formatting-user-defined-types
+//template<>
+//struct fmt::formatter<ggm::Event> : formatter<string_view>
+//{
+//	constexpr auto parse(ggm::Event& e ,format_parse_context& ctx)
+//	{
+//		string_view name = e.ToString();
+//	}
+//};

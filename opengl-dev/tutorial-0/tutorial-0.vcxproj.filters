@@ -21,9 +21,6 @@
     <ClCompile Include="src\ImGui\ImGuiLayer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Layer\Layer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\Layer\LayerStack.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

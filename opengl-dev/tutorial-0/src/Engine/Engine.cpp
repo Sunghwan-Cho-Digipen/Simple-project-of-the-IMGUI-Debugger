@@ -27,10 +27,10 @@ namespace ggm
 			glClear(GL_COLOR_BUFFER_BIT);
 			mWindow->Update();
 
-			//for(auto layer : mLayerStack)
-			//{
-			//	layer->Update();
-			//}
+			for(auto layer : mLayerStack)
+			{
+				layer->Update();
+			}
 			
 		}
 	}
@@ -41,25 +41,25 @@ namespace ggm
 		dispatcher.Dispatch<WindowCloseEvent>(std::bind(&Engine::OnWindowClosed, this, std::placeholders::_1));
 		GGM_CORE_INFO("{0}", e);
 
-		//for(auto iter = mLayerStack.rbegin(); iter != mLayerStack.rend(); ++iter)
-		//{
-		//	(*iter)->OnEvent(e);
-		//	if(e.getHandled())
-		//	{
-		//		break;
-		//	}
-		//}
+		for(auto iter = mLayerStack.rbegin(); iter != mLayerStack.rend(); ++iter)
+		{
+			(*iter)->OnEvent(e);
+			if(e.getHandled())
+			{
+				break;
+			}
+		}
 	}
 
-	//void Engine::PushLayer(Layer* layer)
-	//{
-	//	mLayerStack.PushLayer(layer);
-	//}
+	void Engine::PushLayer(Layer* layer)
+	{
+		mLayerStack.PushLayer(layer);
+	}
 
-	//void Engine::PushOverlay(Layer* layer)
-	//{
-	//	mLayerStack.PushOverlay(layer);
-	//}
+	void Engine::PushOverlay(Layer* layer)
+	{
+		mLayerStack.PushOverlay(layer);
+	}
 
 	bool Engine::OnWindowClosed(WindowCloseEvent& e)
 	{

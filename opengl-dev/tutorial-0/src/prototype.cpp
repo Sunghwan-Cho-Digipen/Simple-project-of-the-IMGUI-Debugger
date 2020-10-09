@@ -1,29 +1,29 @@
 #include "Engine/Engine.h"
 #include "loggingSystem/Log.h"
 
-//class ExampleLayer : public ggm::Layer
-//{
-//public:
-//	ExampleLayer() : Layer("Example")
-//	{}
-//
-//	void Update() override
-//	{
-//		GGM_INFO("ExampleLayer::Update");
-//	}
-//
-//	void OnEvent(ggm::Event& event) override
-//	{
-//		GGM_INFO("{0}", event);
-//	}
-//};
+class ExampleLayer : public ggm::Layer
+{
+public:
+	ExampleLayer() : Layer("Example")
+	{}
+
+	void Update() override
+	{
+		GGM_INFO("ExampleLayer::Update");
+	}
+
+	void OnEvent(ggm::Event& event) override
+	{
+		GGM_INFO("{0}", event);
+	}
+};
 
 class Prototype_engine : public ggm::Engine
 {
 public:
 	Prototype_engine()
 	{
-		/*PushLayer(new ExampleLayer());*/
+		PushLayer(new ExampleLayer());
 	}
 
 	~Prototype_engine()
