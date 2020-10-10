@@ -32,13 +32,15 @@ namespace ggm
 		
 		void Update();
 		
-		unsigned int GetWidth() const { return mData.Width; }
-		unsigned int GetHeight() const { return mData.Height; }
+		[[nodiscard]] unsigned int GetWidth() const { return mData.Width; }
+		[[nodiscard]] unsigned int GetHeight() const { return mData.Height; }
 
 		void SetEventCallback(const EventCallbackFunc& callback) { mData.EventCallback = callback; }
 		void SetGLFWInitialized(const bool isInitialized) { mGLFWInitialized = isInitialized; }
 
 		static Window* Create(const WindowProps& props = WindowProps());
+
+		[[nodiscard]] GLFWwindow* GetWindow() const { return mWindow; }
 		
 	private:
 		virtual void Init(const WindowProps& props);

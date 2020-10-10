@@ -52,7 +52,9 @@ namespace ggm
 		io.KeyMap[ImGuiKey_Y] = GLFW_KEY_Y;
 		io.KeyMap[ImGuiKey_Z] = GLFW_KEY_Z;
 
-		ImGui_ImplOpenGL3_Init("#version 450");
+		ImGui_ImplOpenGL3_Init("#version 410");
+		Engine& engine = Engine::GetEngine();
+		ImGui_ImplGlfw_InitForOpenGL(engine.GetWindow().GetWindow(), true);
 	}
 	
 	void ImGuiLayer::Detach()
@@ -69,7 +71,8 @@ namespace ggm
 		float time = static_cast<float>(glfwGetTime());
 		io.DeltaTime = mTime > 0.0 ? (time - mTime) : (1.0f / 60.0f);
 		mTime = time;
-		
+
+		//ImGui_ImplGlfw_NewFrame();
 		ImGui_ImplOpenGL3_NewFrame();
 		ImGui::NewFrame();
 		
