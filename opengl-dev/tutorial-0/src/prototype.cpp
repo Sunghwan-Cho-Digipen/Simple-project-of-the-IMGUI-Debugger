@@ -26,7 +26,7 @@ public:
 	Prototype_engine()
 	{
 		PushLayer(new ExampleLayer());
-		PushOverlay(new ggm::ImGuiLayer);
+		PushOverlay(new ggm::ImGuiLayer());
 	}
 
 	~Prototype_engine()

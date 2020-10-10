@@ -1,9 +1,10 @@
+
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
 #include "imgui.h"
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
 #include "ImGuiLayer.h"
-
-#include <GLFW/glfw3.h>
 #include "../Engine/Engine.h"
 
 
@@ -21,6 +22,7 @@ namespace ggm
 
 	void ImGuiLayer::Attach()
 	{
+		IMGUI_CHECKVERSION();
 		ImGui::CreateContext();
 		ImGui::StyleColorsDark();
 
@@ -52,9 +54,12 @@ namespace ggm
 		io.KeyMap[ImGuiKey_Y] = GLFW_KEY_Y;
 		io.KeyMap[ImGuiKey_Z] = GLFW_KEY_Z;
 
-		ImGui_ImplOpenGL3_Init("#version 410");
+		glewInit();
+		
 		Engine& engine = Engine::GetEngine();
 		ImGui_ImplGlfw_InitForOpenGL(engine.GetWindow().GetWindow(), true);
+		ImGui_ImplOpenGL3_Init("#version 410");
+		
 	}
 	
 	void ImGuiLayer::Detach()
@@ -72,8 +77,8 @@ namespace ggm
 		io.DeltaTime = mTime > 0.0 ? (time - mTime) : (1.0f / 60.0f);
 		mTime = time;
 
+		ImGui_ImplOpenGL3_NewFrame();
 		ImGui_ImplGlfw_NewFrame();
-		//ImGui_ImplOpenGL3_NewFrame();
 		ImGui::NewFrame();
 		
 		static bool show = true;
