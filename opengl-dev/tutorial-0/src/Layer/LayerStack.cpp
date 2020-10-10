@@ -1,23 +1,22 @@
+
 #include "LayerStack.h"
 
 namespace ggm
 {
-	LayerStack::LayerStack()
-	{
-		mLayerInsert = mLayers.begin();
-	}
 
 	LayerStack::~LayerStack()
 	{
 		for(Layer* layer : mLayers)
 		{
+			layer->Detach();
 			delete layer;
 		}
 	}
 
 	void LayerStack::PushLayer(Layer* layer)
 	{
-		mLayerInsert = mLayers.emplace(mLayerInsert, layer);
+		mLayers.emplace(mLayers.begin() + mLayerInsertIndex, layer);
+		++mLayerInsertIndex;
 	}
 
 	void LayerStack::PushOverlay(Layer* overlay)
@@ -27,19 +26,21 @@ namespace ggm
 
 	void LayerStack::PopLayer(Layer* layer)
 	{
-		auto iter = std::find(mLayers.begin(), mLayers.end(), layer);
-		if(iter != mLayers.end())
+		auto iter = std::find(mLayers.begin(), mLayers.begin() + mLayerInsertIndex, layer);
+		if(iter != mLayers.begin() + mLayerInsertIndex)
 		{
+			layer->Detach();
 			mLayers.erase(iter);
-			--mLayerInsert;
+			--mLayerInsertIndex;
 		}
 	}
 
 	void LayerStack::PopOverlay(Layer* overlay)
 	{
-		auto iter = std::find(mLayers.begin(), mLayers.end(), overlay);
+		auto iter = std::find(mLayers.begin() + mLayerInsertIndex, mLayers.end(), overlay);
 		if(iter != mLayers.end())
 		{
+			overlay->Detach();
 			mLayers.erase(iter);
 		}
 	}

@@ -1,5 +1,7 @@
 #include "Engine/Engine.h"
 #include "loggingSystem/Log.h"
+#include "ImGui/ImGuiLayer.h"
+
 
 class ExampleLayer : public ggm::Layer
 {
@@ -24,6 +26,7 @@ public:
 	Prototype_engine()
 	{
 		PushLayer(new ExampleLayer());
+		PushOverlay(new ggm::ImGuiLayer);
 	}
 
 	~Prototype_engine()

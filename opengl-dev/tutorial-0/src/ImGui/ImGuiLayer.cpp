@@ -4,7 +4,7 @@
 #include "ImGuiLayer.h"
 
 #include <GLFW/glfw3.h>
-
+#include "../Engine/Engine.h"
 
 
 namespace ggm
@@ -63,7 +63,8 @@ namespace ggm
 	void ImGuiLayer::Update()
 	{
 		ImGuiIO& io = ImGui::GetIO();
-		io.DisplaySize = ImVec2(200,50);
+		Engine& engine = Engine::GetEngine();
+		io.DisplaySize = ImVec2(engine.GetWindow().GetWidth(),engine.GetWindow().GetHeight());
 
 		float time = static_cast<float>(glfwGetTime());
 		io.DeltaTime = mTime > 0.0 ? (time - mTime) : (1.0f / 60.0f);

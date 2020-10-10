@@ -1,5 +1,6 @@
 #pragma once
 
+#include <iterator>
 #include <vector>
 #include "Layer.h"
 
@@ -8,7 +9,7 @@ namespace ggm
 	class LayerStack
 	{
 	public:
-		LayerStack();
+		LayerStack() = default;
 		~LayerStack();
 		
 		void PushLayer(Layer* layer);
@@ -18,12 +19,17 @@ namespace ggm
 
 		std::vector<Layer*>::iterator begin() { return mLayers.begin(); }
 		std::vector<Layer*>::iterator end() { return mLayers.end(); }
-		auto rbegin() { return mLayers.rbegin(); }
-		auto rend() { return mLayers.rend(); }
+		std::vector<Layer*>::reverse_iterator rbegin() { return mLayers.rbegin(); }
+		std::vector<Layer*>::reverse_iterator rend() { return mLayers.rend(); }
+
+		[[nodiscard]] std::vector<Layer*>::const_iterator begin() const { return mLayers.begin(); }
+		[[nodiscard]] std::vector<Layer*>::const_iterator end()	const { return mLayers.end(); }
+		[[nodiscard]] std::vector<Layer*>::const_reverse_iterator rbegin() const { return mLayers.rbegin(); }
+		[[nodiscard]] std::vector<Layer*>::const_reverse_iterator rend() const { return mLayers.rend(); }
 		
 	private:
 		std::vector<Layer*> mLayers;
-		std::vector<Layer*>::iterator mLayerInsert;
+		unsigned int mLayerInsertIndex = 0;
 		
 	};
 }

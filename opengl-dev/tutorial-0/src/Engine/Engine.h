@@ -5,6 +5,7 @@
 #include "../Window/Window.h"
 #include "../Layer/Layer.h"
 #include "../Layer/LayerStack.h"
+
 namespace ggm
 {
 	class Engine
@@ -19,12 +20,20 @@ namespace ggm
 
 		void PushLayer(Layer* layer);
 		void PushOverlay(Layer* layer);
+
+		static Engine& GetEngine() { return *sInstance; }
+		Window& GetWindow() { return *mWindow; }
+		
 	private:
 		bool OnWindowClosed(WindowCloseEvent& e);
 		std::unique_ptr<Window> mWindow;
 		bool mRunning = true;
 
 		LayerStack mLayerStack;
+
+	private:
+		static Engine* sInstance;
+		
 	};
 
 }

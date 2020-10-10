@@ -1,7 +1,5 @@
 #pragma once
 #include "../Layer/Layer.h"
-
-
 #include "../Event/EngineEvent.h"
 #include "../Event/KeyEvent.h"
 #include "../Event/MouseEvent.h"

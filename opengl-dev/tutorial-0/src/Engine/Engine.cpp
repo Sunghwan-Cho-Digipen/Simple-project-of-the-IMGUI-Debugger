@@ -8,8 +8,12 @@
 
 namespace ggm
 {
+	Engine* Engine::sInstance = nullptr;
+	
 	Engine::Engine()
 	{
+		GGM_CORE_ASSERT(!sInstance, "Engine already exists!");
+		sInstance = this;
 		mWindow = std::unique_ptr<ggm::Window>(ggm::Window::Create());
 		mWindow->SetEventCallback(std::bind(&Engine::Event, this, std::placeholders::_1));
 	}
@@ -54,11 +58,13 @@ namespace ggm
 	void Engine::PushLayer(Layer* layer)
 	{
 		mLayerStack.PushLayer(layer);
+		layer->Attach();
 	}
 
 	void Engine::PushOverlay(Layer* layer)
 	{
 		mLayerStack.PushOverlay(layer);
+		layer->Attach();
 	}
 
 	bool Engine::OnWindowClosed(WindowCloseEvent& e)
