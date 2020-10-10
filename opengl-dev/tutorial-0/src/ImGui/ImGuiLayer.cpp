@@ -72,8 +72,8 @@ namespace ggm
 		io.DeltaTime = mTime > 0.0 ? (time - mTime) : (1.0f / 60.0f);
 		mTime = time;
 
-		//ImGui_ImplGlfw_NewFrame();
-		ImGui_ImplOpenGL3_NewFrame();
+		ImGui_ImplGlfw_NewFrame();
+		//ImGui_ImplOpenGL3_NewFrame();
 		ImGui::NewFrame();
 		
 		static bool show = true;
