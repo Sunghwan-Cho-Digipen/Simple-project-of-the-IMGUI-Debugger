@@ -31,6 +31,7 @@ namespace ggm
 		using EventCallbackFunc = std::function<void(Event&)>;
 		
 		void Update();
+		void SwapBuffers();
 		
 		[[nodiscard]] unsigned int GetWidth() const { return mData.Width; }
 		[[nodiscard]] unsigned int GetHeight() const { return mData.Height; }

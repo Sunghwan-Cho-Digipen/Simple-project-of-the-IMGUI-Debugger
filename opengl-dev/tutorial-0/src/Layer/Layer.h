@@ -23,5 +23,3 @@ namespace ggm
 		std::string mDebugName;
 	};
 }
-
-

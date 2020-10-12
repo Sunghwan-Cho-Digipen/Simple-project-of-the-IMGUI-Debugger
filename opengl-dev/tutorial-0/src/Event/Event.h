@@ -9,20 +9,10 @@ namespace ggm
 	enum class EEventType
 	{
 		NONE = 0,
-		WINDOWCLOSE,
-		WINDOWRESIZE,
-		WINDOWFOCUS,
-		WINDOWLOSTFOCUS,
-		WINDOWMOVED,
-		ENGINETICK,
-		ENGINEUPDATE,
-		//ENGINERENDER,
-		KEYPRESSED,
-		KEYRELEASED,
-		MOUSEPRESSED,
-		MOUSERELEASED,
-		MOUSEMOVED,
-		MOUSESCROLLED
+		WINDOWCLOSE, WINDOWRESIZE, WINDOWFOCUS, WINDOWLOSTFOCUS, WINDOWMOVED, 
+		ENGINETICK, ENGINEUPDATE, //ENGINERENDER,
+		KEYPRESSED, KEYRELEASED, KEYTYPED,
+		MOUSEPRESSED, MOUSERELEASED, MOUSEMOVED, MOUSESCROLLED
 	};
 
 #define EVENT_CLASS_TYPE(type) static EEventType GetStaticType() { return EEventType::##type; }\
@@ -73,14 +63,3 @@ namespace ggm
 		return os << e.ToString();
 	}
 }
-
-
-////https://fmt.dev/latest/api.html#formatting-user-defined-types
-//template<>
-//struct fmt::formatter<ggm::Event> : formatter<string_view>
-//{
-//	constexpr auto parse(ggm::Event& e ,format_parse_context& ctx)
-//	{
-//		string_view name = e.ToString();
-//	}
-//};

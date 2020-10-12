@@ -25,8 +25,8 @@ namespace ggm
 		bool onMouseScrolledEvent(MouseScrolledEvent& e);
 		bool onKeyPressedEvent(KeyPressedEvent& e);
 		bool onKeyReleasedEvent(KeyReleasedEvent& e);
-		//bool onKeyTypedEvent(KeyTypedEvent& e);
-		bool onWindowResizedEvent(WindowResizeEvent& e);
+		bool onKeyTypedEvent(KeyTypedEvent& e);
+		bool onWindowResizeEvent(WindowResizeEvent& e);
 		
 		
 	private:

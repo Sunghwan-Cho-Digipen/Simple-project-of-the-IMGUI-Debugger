@@ -20,6 +20,10 @@ namespace ggm
 	void Window::Update()
 	{
 		glfwPollEvents();
+	}
+
+	void Window::SwapBuffers()
+	{
 		glfwSwapBuffers(mWindow);
 	}
 	
@@ -95,6 +99,14 @@ namespace ggm
 			}
 		});
 
+		glfwSetCharCallback(mWindow, [](GLFWwindow* window, unsigned int keycode)
+		{
+			WindowData& data = *static_cast<WindowData*>(glfwGetWindowUserPointer(window));
+			
+			KeyTypedEvent event(keycode);
+			data.EventCallback(event);
+		});
+		
 		glfwSetMouseButtonCallback(mWindow, [](GLFWwindow* window, int button, int action, [[maybe_unused]] int mods)
 		{
 			WindowData& data = *static_cast<WindowData*>(glfwGetWindowUserPointer(window));
@@ -139,6 +151,4 @@ namespace ggm
 		glfwDestroyWindow(mWindow);
 	}
 
-	
-	
 }

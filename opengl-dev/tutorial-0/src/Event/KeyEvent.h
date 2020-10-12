@@ -49,5 +49,21 @@ namespace ggm
 
 		EVENT_CLASS_TYPE(KEYRELEASED)
 	};
+
+	class KeyTypedEvent : public KeyEvent
+	{
+	public:
+		KeyTypedEvent(int keyCode)
+			: KeyEvent(keyCode) {}
+
+		std::string ToString() const override
+		{
+			std::stringstream ss;
+			ss << "KeyTypedEvent: " << mKeyCode;
+			return ss.str();
+		}
+
+		EVENT_CLASS_TYPE(KEYTYPED)
+	};
 	
 }

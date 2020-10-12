@@ -35,7 +35,7 @@ namespace ggm
 			{
 				layer->Update();
 			}
-			
+			mWindow->SwapBuffers();
 		}
 	}
 
