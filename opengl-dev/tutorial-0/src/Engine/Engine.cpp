@@ -67,7 +67,7 @@ namespace ggm
 		layer->Attach();
 	}
 
-	bool Engine::OnWindowClosed(WindowCloseEvent& e)
+	bool Engine::OnWindowClosed([[maybe_unused]]WindowCloseEvent& e)
 	{
 		mRunning = false;
 		return true;

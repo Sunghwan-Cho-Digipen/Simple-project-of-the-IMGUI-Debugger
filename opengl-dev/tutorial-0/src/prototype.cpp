@@ -35,7 +35,7 @@ public:
 	}
 };
 
-void main()
+int main()
 {
 	ggm::Log::Init();
 	GGM_CORE_WARN("Initialized Log");
@@ -45,4 +45,5 @@ void main()
 	Prototype_engine* engine = new Prototype_engine();
 	engine->Run();
 	delete engine;
+	return 0;
 }

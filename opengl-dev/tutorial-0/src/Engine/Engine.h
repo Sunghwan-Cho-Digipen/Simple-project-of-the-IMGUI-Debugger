@@ -25,7 +25,7 @@ namespace ggm
 		Window& GetWindow() { return *mWindow; }
 		
 	private:
-		bool OnWindowClosed(WindowCloseEvent& e);
+		bool OnWindowClosed([[maybe_unused]]WindowCloseEvent& e);
 		std::unique_ptr<Window> mWindow;
 		bool mRunning = true;
 
