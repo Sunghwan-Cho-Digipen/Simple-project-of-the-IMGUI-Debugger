@@ -112,6 +112,12 @@
     <ClInclude Include="src\Event\Event.h" />
     <ClInclude Include="src\Event\KeyEvent.h" />
     <ClInclude Include="src\Event\MouseEvent.h" />
+    <ClInclude Include="src\input\Input.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="src\key_mouse_codes\KeyCode.h" />
+    <ClInclude Include="src\key_mouse_codes\MouseCode.h" />
     <ClInclude Include="src\Layer\Layer.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>

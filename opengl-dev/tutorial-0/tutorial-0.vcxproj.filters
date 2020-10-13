@@ -65,6 +65,15 @@
     <ClInclude Include="src\Window\Window.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\input\Input.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\key_mouse_codes\MouseCode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\key_mouse_codes\KeyCode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />
