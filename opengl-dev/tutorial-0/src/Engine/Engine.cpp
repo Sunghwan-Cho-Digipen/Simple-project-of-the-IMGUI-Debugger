@@ -8,12 +8,12 @@
 
 namespace ggm
 {
-	Engine* Engine::sInstance = nullptr;
+	Engine* Engine::engine = nullptr;
 	
 	Engine::Engine()
 	{
-		GGM_CORE_ASSERT(!sInstance, "Engine already exists!");
-		sInstance = this;
+		GGM_CORE_ASSERT(!engine, "Engine already exists!");
+		engine = this;
 		mWindow = std::unique_ptr<ggm::Window>(ggm::Window::Create());
 		mWindow->SetEventCallback(std::bind(&Engine::Event, this, std::placeholders::_1));
 	}
@@ -43,7 +43,7 @@ namespace ggm
 	{
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(std::bind(&Engine::OnWindowClosed, this, std::placeholders::_1));
-		GGM_CORE_INFO("{0}", e);
+		GGM_CORE_TRACE("{0}", e);
 
 		for(auto iter = mLayerStack.rbegin(); iter != mLayerStack.rend(); ++iter)
 		{

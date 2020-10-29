@@ -11,13 +11,21 @@ public:
 
 	void Update() override
 	{
-		GGM_INFO("ExampleLayer::Update");
+		if(startCount <= count)
+		{
+			GGM_INFO("ExampleLayer::Update");
+		}
+		++startCount;
 	}
 
 	void OnEvent(ggm::Event& event) override
 	{
 		GGM_INFO("{0}", event);
 	}
+
+private:
+	static constexpr int count = 10;
+	int startCount = 0;
 };
 
 class Prototype_engine : public ggm::Engine

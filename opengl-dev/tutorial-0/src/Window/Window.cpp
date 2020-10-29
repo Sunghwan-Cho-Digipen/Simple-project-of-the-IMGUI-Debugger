@@ -38,7 +38,7 @@ namespace ggm
 		mData.Width = props.mWidth;
 		mData.Height = props.mHeight;
 
-		GGM_CORE_INFO("Creating Window {0} ({1}, {2})", mData.Title, mData.Width, mData.Height);
+		GGM_CORE_TRACE("Creating Window {0} ({1}, {2})", mData.Title, mData.Width, mData.Height);
 		
 		if(mGLFWInitialized == false)
 		{

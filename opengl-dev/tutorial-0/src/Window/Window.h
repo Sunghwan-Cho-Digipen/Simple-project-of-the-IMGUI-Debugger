@@ -41,7 +41,7 @@ namespace ggm
 
 		static Window* Create(const WindowProps& props = WindowProps());
 
-		[[nodiscard]] GLFWwindow* GetWindow() const { return mWindow; }
+		[[nodiscard]] GLFWwindow* GetNativeWindow() const { return mWindow; }
 		
 	private:
 		virtual void Init(const WindowProps& props);

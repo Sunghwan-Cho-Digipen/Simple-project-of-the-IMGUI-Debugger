@@ -21,7 +21,7 @@ namespace ggm
 		void PushLayer(Layer* layer);
 		void PushOverlay(Layer* layer);
 
-		static Engine& GetEngine() { return *sInstance; }
+		static Engine& GetEngine() { return *engine; }
 		Window& GetWindow() { return *mWindow; }
 		
 	private:
@@ -32,7 +32,7 @@ namespace ggm
 		LayerStack mLayerStack;
 
 	private:
-		static Engine* sInstance;
+		static Engine* engine;
 		
 	};
 

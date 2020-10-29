@@ -16,17 +16,6 @@ namespace ggm
 		void Attach() override;
 		void Detach() override;
 		void Update() override;
-		void OnEvent(Event& event) override;
-
-	private:
-		bool onMouseButtonPressedEvent(MousePressedEvent& e);
-		bool onMouseButtonReleasedEvent(MouseReleasedEvent& e);
-		bool onMouseMovedEvent(MouseMovedEvent& e);
-		bool onMouseScrolledEvent(MouseScrolledEvent& e);
-		bool onKeyPressedEvent(KeyPressedEvent& e);
-		bool onKeyReleasedEvent(KeyReleasedEvent& e);
-		bool onKeyTypedEvent(KeyTypedEvent& e);
-		bool onWindowResizeEvent(WindowResizeEvent& e);
 		
 		
 	private:

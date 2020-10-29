@@ -48,14 +48,5 @@ namespace ggm
 		EngineUpdateEvent() = default;
 
 		EVENT_CLASS_TYPE(ENGINEUPDATE)
-	};
-
-	//class EngineRenderEvent : public Event
-	//{
-	//public:
-	//	EngineRenderEvent() = default;
-
-	//	EVENT_CLASS_TYPE(ENGINERENDER)
-	//};
-	
+	};	
 }
