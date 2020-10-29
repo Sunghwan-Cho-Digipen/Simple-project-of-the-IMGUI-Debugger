@@ -16,6 +16,7 @@ namespace ggm
 		virtual void Attach(){}
 		virtual void Detach(){}
 		virtual void Update(){}
+		virtual void OnImGuiDraw() {}
 		virtual void OnEvent([[maybe_unused]]Event& event){}
 
 		[[nodiscard]] const std::string& GetName() const { return mDebugName; }

@@ -2,6 +2,7 @@
 #include <memory>
 #include "../Event/Event.h"
 #include "../Event/EngineEvent.h"
+#include "../ImGui/ImGuiLayer.h"
 #include "../Window/Window.h"
 #include "../Layer/Layer.h"
 #include "../Layer/LayerStack.h"
@@ -27,6 +28,7 @@ namespace ggm
 	private:
 		bool OnWindowClosed([[maybe_unused]]WindowCloseEvent& e);
 		std::unique_ptr<Window> mWindow;
+		ImGuiLayer* mImGuiLayer;
 		bool mRunning = true;
 
 		LayerStack mLayerStack;

@@ -95,6 +95,12 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="src\ImGui\ImGui\backends\imgui_impl_glfw.cpp" />
+    <ClCompile Include="src\ImGui\ImGui\backends\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="src\ImGui\ImGui\imgui.cpp" />
+    <ClCompile Include="src\ImGui\ImGui\imgui_demo.cpp" />
+    <ClCompile Include="src\ImGui\ImGui\imgui_draw.cpp" />
+    <ClCompile Include="src\ImGui\ImGui\imgui_widgets.cpp" />
     <ClCompile Include="src\input\WindowsInput.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
@@ -116,6 +122,14 @@
     <ClInclude Include="src\Event\Event.h" />
     <ClInclude Include="src\Event\KeyEvent.h" />
     <ClInclude Include="src\Event\MouseEvent.h" />
+    <ClInclude Include="src\ImGui\ImGui\backends\imgui_impl_glfw.h" />
+    <ClInclude Include="src\ImGui\ImGui\backends\imgui_impl_opengl3.h" />
+    <ClInclude Include="src\ImGui\ImGui\imconfig.h" />
+    <ClInclude Include="src\ImGui\ImGui\imgui.h" />
+    <ClInclude Include="src\ImGui\ImGui\imgui_internal.h" />
+    <ClInclude Include="src\ImGui\ImGui\imstb_rectpack.h" />
+    <ClInclude Include="src\ImGui\ImGui\imstb_textedit.h" />
+    <ClInclude Include="src\ImGui\ImGui\imstb_truetype.h" />
     <ClInclude Include="src\input\Input.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>

@@ -16,6 +16,8 @@ namespace ggm
 		engine = this;
 		mWindow = std::unique_ptr<ggm::Window>(ggm::Window::Create());
 		mWindow->SetEventCallback(std::bind(&Engine::Event, this, std::placeholders::_1));
+		mImGuiLayer = new ImGuiLayer();
+		PushOverlay(mImGuiLayer);
 	}
 	
 	Engine::~Engine()
@@ -35,6 +37,14 @@ namespace ggm
 			{
 				layer->Update();
 			}
+
+			mImGuiLayer->Begin();
+			for(Layer* layer : mLayerStack)
+			{
+				layer->OnImGuiDraw();
+			}
+			mImGuiLayer->End();
+			
 			mWindow->SwapBuffers();
 		}
 	}

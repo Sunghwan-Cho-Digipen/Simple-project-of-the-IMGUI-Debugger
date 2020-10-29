@@ -15,8 +15,9 @@ namespace ggm
 
 		void Attach() override;
 		void Detach() override;
-		void Update() override;
-		
+		void OnImGuiDraw() override;
+		void Begin();
+		void End();
 		
 	private:
 		float mTime = 0.0f;
