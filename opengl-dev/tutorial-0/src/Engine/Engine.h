@@ -13,7 +13,7 @@ namespace ggm
 	{
 	public:
 		Engine();
-		virtual ~Engine();
+		virtual ~Engine() = default;
 
 		void Run();
 
@@ -22,7 +22,7 @@ namespace ggm
 		void PushLayer(Layer* layer);
 		void PushOverlay(Layer* layer);
 
-		static Engine& GetEngine() { return *engine; }
+		static Engine& GetEngine() { return *sEngine; }
 		Window& GetWindow() { return *mWindow; }
 		
 	private:
@@ -32,9 +32,9 @@ namespace ggm
 		bool mRunning = true;
 
 		LayerStack mLayerStack;
-
+		float mLastFrameTime = 0.0f;
 	private:
-		static Engine* engine;
+		static Engine* sEngine;
 		
 	};
 

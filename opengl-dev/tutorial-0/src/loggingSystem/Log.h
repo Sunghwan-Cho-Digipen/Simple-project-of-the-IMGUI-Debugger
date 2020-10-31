@@ -13,12 +13,12 @@ namespace ggm
 	public:
 		static void Init();
 
-		static std::shared_ptr<spdlog::logger>& GetCoreLogger() { return coreLogger; }
-		static std::shared_ptr<spdlog::logger>& GetClientLogger() { return clientLogger; }
+		static std::shared_ptr<spdlog::logger>& GetCoreLogger() { return sCoreLogger; }
+		static std::shared_ptr<spdlog::logger>& GetClientLogger() { return sClientLogger; }
 		
 	private:
-		static std::shared_ptr<spdlog::logger> coreLogger;
-		static std::shared_ptr<spdlog::logger> clientLogger;
+		static std::shared_ptr<spdlog::logger> sCoreLogger;
+		static std::shared_ptr<spdlog::logger> sClientLogger;
 		
 	};	
 }

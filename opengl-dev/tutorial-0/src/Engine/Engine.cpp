@@ -1,6 +1,7 @@
 
 
 #include "Engine.h"
+#include "Time.h"
 #include <GLFW/glfw3.h>
 
 #include "../Event/EngineEvent.h"
@@ -8,21 +9,16 @@
 
 namespace ggm
 {
-	Engine* Engine::engine = nullptr;
+	Engine* Engine::sEngine = nullptr;
 	
 	Engine::Engine()
 	{
-		GGM_CORE_ASSERT(!engine, "Engine already exists!");
-		engine = this;
+		GGM_CORE_ASSERT(!sEngine, "Engine already exists!");
+		sEngine = this;
 		mWindow = std::unique_ptr<ggm::Window>(ggm::Window::Create());
 		mWindow->SetEventCallback(std::bind(&Engine::Event, this, std::placeholders::_1));
 		mImGuiLayer = new ImGuiLayer();
 		PushOverlay(mImGuiLayer);
-	}
-	
-	Engine::~Engine()
-	{
-		
 	}
 
 	void Engine::Run()
@@ -31,11 +27,14 @@ namespace ggm
 		{
 			glClearColor(0.f, 0.5f, 1.f, 1.f);
 			glClear(GL_COLOR_BUFFER_BIT);
-			mWindow->Update();
 
+			float time = (float)glfwGetTime();
+			Time deltatime = time - mLastFrameTime;
+			mLastFrameTime = time;
+			
 			for(auto layer : mLayerStack)
 			{
-				layer->Update();
+				layer->Update(deltatime);
 			}
 
 			mImGuiLayer->Begin();
@@ -44,6 +43,7 @@ namespace ggm
 				layer->OnImGuiDraw();
 			}
 			mImGuiLayer->End();
+			mWindow->Update();
 			
 			mWindow->SwapBuffers();
 		}

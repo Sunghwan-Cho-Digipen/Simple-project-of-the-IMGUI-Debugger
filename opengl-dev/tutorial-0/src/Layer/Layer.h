@@ -3,6 +3,7 @@
 #include <sstream>
 #include <string>
 #include "../Event/Event.h"
+#include "../Engine/Time.h"
 
 namespace ggm
 {
@@ -15,7 +16,7 @@ namespace ggm
 
 		virtual void Attach(){}
 		virtual void Detach(){}
-		virtual void Update(){}
+		virtual void Update([[maybe_unused]]Time deltatime){}
 		virtual void OnImGuiDraw() {}
 		virtual void OnEvent([[maybe_unused]]Event& event){}
 

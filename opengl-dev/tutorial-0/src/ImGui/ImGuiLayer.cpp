@@ -1,30 +1,23 @@
 
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
-#include "ImGuiLayer.h"
-#include "../Engine/Engine.h"
-#include "../Event/Event.h"
 #include "ImGui/imgui.h"
 #include "ImGui/backends/imgui_impl_opengl3.h"
 #include "ImGui/backends/imgui_impl_glfw.h"
+#include "ImGuiLayer.h"
 
-#define GGM_BIND_EVENT_FUNC(function) std::bind(&function, this, std::placeholders::_1)
+#include "../Engine/Engine.h"
+#include "../ImGui/ImGuiConsole.h"
 
 namespace ggm
 {
-	ImGuiLayer::ImGuiLayer() : Layer("ImGuiLayer")
+	ImGuiLayer::ImGuiLayer(bool renderDemo, bool renderConsole) : Layer("ImGuiLayer"), mRenderDemo(renderDemo), mRenderConsole(renderConsole)
 	{
-		
-	}
-
-	ImGuiLayer::~ImGuiLayer()
-	{
-		
 	}
 
 	void ImGuiLayer::Attach()
 	{
-		// Setup Dear ImGui context IMGUI_CHECKVERSION();
+		// Setup Dear ImGui context
 		IMGUI_CHECKVERSION();
 		ImGui::CreateContext();
 		ImGuiIO& io = ImGui::GetIO(); (void)io;
@@ -42,15 +35,12 @@ namespace ggm
 		if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable) //Uncomment
 		{
 			style.WindowRounding = 0.0f;
-			//style.Colors(ImGuiCol_WindowBg].w = 1.0f;
-			
+			style.Colors[ImGuiCol_WindowBg].w = 1.0f;
 		}
-		
-
+	
 		glewInit();
 		
-		Engine& engine = Engine::GetEngine();
-		ImGui_ImplGlfw_InitForOpenGL(engine.GetWindow().GetNativeWindow(), false);
+		ImGui_ImplGlfw_InitForOpenGL(Engine::GetEngine().GetWindow().GetNativeWindow(), true);
 		ImGui_ImplOpenGL3_Init("#version 410");
 		
 	}
@@ -64,8 +54,8 @@ namespace ggm
 
 	void ImGuiLayer::OnImGuiDraw()
 	{
-		static bool show = true;
-		ImGui::ShowDemoWindow(&show);
+		ImGui::ShowDemoWindow(&mRenderDemo);
+		ImGuiConsole::OnImGuiRender(&mRenderConsole);
 	}
 
 	void ImGuiLayer::Begin()

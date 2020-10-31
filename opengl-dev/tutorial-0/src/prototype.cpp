@@ -1,5 +1,6 @@
 #include "Engine/Engine.h"
 #include "loggingSystem/Log.h"
+#include "Layer/Layer.h"
 #include "ImGui/ImGuiLayer.h"
 
 
@@ -9,7 +10,7 @@ public:
 	ExampleLayer() : Layer("Example")
 	{}
 
-	void Update() override
+	void Update([[maybe_unused]]ggm::Time deltaTime) override
 	{
 		if(startCount <= count)
 		{
