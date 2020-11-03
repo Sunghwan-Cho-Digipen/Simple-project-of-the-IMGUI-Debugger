@@ -29,7 +29,7 @@ namespace ggm
 			static std::vector<ELevel> sLevels;
 		public:
 			Message(const std::string message = "", ELevel level = ELevel::INVALID);
-			void OnImGuiRender() const;
+			void OnImGuiDraw() const;
 			static ELevel GetLowerLevel(ELevel level);
 			static ELevel GetHigherLevel(ELevel level);
 			static const char* GetLevelName(ELevel level);

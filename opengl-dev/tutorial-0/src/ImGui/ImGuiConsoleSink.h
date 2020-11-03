@@ -24,7 +24,7 @@ namespace ggm
         {
             spdlog::memory_buf_t formatted;
         	
-            formatter_->format(msg, formatted); // Todo check core.h line 1834 why does this gets the damn sink::formatter;;;
+            formatter_->format(msg, formatted); 
             *(mMessageBuffer.begin() + mMessagesBuffered) = std::make_shared<ImGuiConsole::Message>(fmt::to_string(formatted), GetMessageLevel(msg.level));
             if (++mMessagesBuffered == mMessageBufferCapacity)
             {
@@ -34,7 +34,7 @@ namespace ggm
 
         void flush_() override
         {
-            for (std::shared_ptr<ImGuiConsole::Message> message : mMessageBuffer)
+            for (const auto& message : mMessageBuffer)
             {
                 ImGuiConsole::addMessage(message);
             }

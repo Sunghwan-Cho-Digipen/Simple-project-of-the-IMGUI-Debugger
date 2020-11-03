@@ -2,8 +2,6 @@
 #include <memory>
 #include <vector>
 
-
-
 #include "../loggingSystem/Log.h"
 #include "ImGuiConsole.h"
 #include "ImGui/imgui.h"
@@ -79,7 +77,7 @@ namespace ggm
 	{
 	}
 
-	void ImGuiConsole::Message::OnImGuiRender() const
+	void ImGuiConsole::Message::OnImGuiDraw() const
 	{
 		if(mLEVEL != ELevel::INVALID && mLEVEL >= ImGuiConsole::sMessageBufferRenderFilter)
 		{
@@ -195,7 +193,7 @@ namespace ggm
 			{
 				for (auto message = messageStart; message != sMessageBuffer.end(); ++message)
 				{
-					(*message)->OnImGuiRender();
+					(*message)->OnImGuiDraw();
 				}
 			}
 			
@@ -203,7 +201,7 @@ namespace ggm
 			{
 				for (auto message = sMessageBuffer.begin(); message != messageStart; ++message)
 				{
-					(*message)->OnImGuiRender();
+					(*message)->OnImGuiDraw();
 				}
 			}
 			
